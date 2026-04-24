@@ -9,6 +9,21 @@ npm install
 npm run dev        # Raycast auto-imports the extension
 ```
 
+### First-time setup — repo-local git identity
+
+Make sure the commits you push are attributed to your GitHub account, not
+whatever global identity you happen to be using (work email, etc.):
+
+```bash
+# Inside the repo, not --global
+git config user.name "CodePirate7"
+git config user.email "35660919+CodePirate7@users.noreply.github.com"
+```
+
+The `<id>+<login>@users.noreply.github.com` form is GitHub's official
+noreply address — it's always attributed to the account and never leaks a
+real email. Replace with your own GitHub numeric id and login if you fork.
+
 Edit any `src/*.tsx` file; Raycast hot-reloads. Logs stream to the Raycast developer console.
 
 ## Quality gates (run before PR)
