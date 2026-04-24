@@ -6,8 +6,16 @@
   "icon": "extension-icon.png",
   "author": "CodePirate7",
   "license": "MIT",
-  "categories": ["Productivity", "Developer Tools"],
-  "keywords": ["craft-agents", "ai", "agent", "deeplink"],
+  "categories": [
+    "Productivity",
+    "Developer Tools"
+  ],
+  "keywords": [
+    "craft-agents",
+    "ai",
+    "agent",
+    "deeplink"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/CodePirate7/raycast-craft-agents.git"
@@ -19,8 +27,18 @@
       "description": "Open a new Craft Agents session with optional input, permission mode, label, and working directory.",
       "mode": "no-view",
       "arguments": [
-        { "name": "input", "placeholder": "Initial message (optional)", "type": "text", "required": false },
-        { "name": "mode", "placeholder": "plan | acceptEdits | bypass | default", "type": "text", "required": false }
+        {
+          "name": "input",
+          "placeholder": "Initial message (optional)",
+          "type": "text",
+          "required": false
+        },
+        {
+          "name": "mode",
+          "placeholder": "plan | acceptEdits | bypass | default",
+          "type": "text",
+          "required": false
+        }
       ]
     },
     {
@@ -35,7 +53,12 @@
       "description": "Start a new session and immediately send the given message.",
       "mode": "no-view",
       "arguments": [
-        { "name": "input", "placeholder": "What to ask", "type": "text", "required": true }
+        {
+          "name": "input",
+          "placeholder": "What to ask",
+          "type": "text",
+          "required": true
+        }
       ]
     },
     {
@@ -113,5 +136,6 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
-  }
+  },
+  "version": "1.0.0"
 }
