@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/CodePirate7/raycast-craft-agents/compare/v1.0.0...v1.0.1) (2026-04-24)
+
+
+### Bug Fixes
+
+* set author to Raycast handle "CodePirate" and enable ray lint gate ([f60430c](https://github.com/CodePirate7/raycast-craft-agents/commit/f60430c899ff39140773481d4a87c6b0c9a3e949))
+
 ## 1.0.0 (2026-04-24)
 
 
