@@ -29,13 +29,15 @@ function readFirstLine(filePath: string): string | null {
   }
 }
 
-function parseMeta(line: string): ReturnType<typeof SessionMetaSchema.safeParse> {
+function parseMeta(line: string): import("./sessions.schema").SessionMeta | null {
+  let obj: unknown;
   try {
-    const obj = JSON.parse(line) as unknown;
-    return SessionMetaSchema.safeParse(obj);
+    obj = JSON.parse(line);
   } catch {
-    return { success: false, error: { issues: [] } } as ReturnType<typeof SessionMetaSchema.safeParse>;
+    return null;
   }
+  const result = SessionMetaSchema.safeParse(obj);
+  return result.success ? result.data : null;
 }
 
 function toDate(v: string | number | undefined): Date | undefined {
@@ -52,19 +54,18 @@ function hydrate(id: string, line: string | null, folderMTime: Date): SessionRec
   if (!line) {
     return { ...recordFromId(id), updatedAt: folderMTime };
   }
-  const parsed = parseMeta(line);
-  if (!parsed.success) {
+  const meta = parseMeta(line);
+  if (!meta) {
     logger.debug("sessions.meta_parse_failed", { id });
     return { ...recordFromId(id), updatedAt: folderMTime };
   }
-  const m = parsed.data;
   return {
     id,
-    displayName: m.name ?? m.title ?? id,
-    labels: m.labels ?? [],
-    status: m.sessionStatus,
-    flagged: m.flagged ?? false,
-    updatedAt: toDate(m.updatedAt as string | number | undefined) ?? folderMTime,
+    displayName: meta.name ?? meta.title ?? id,
+    labels: meta.labels ?? [],
+    status: meta.sessionStatus,
+    flagged: meta.flagged ?? false,
+    updatedAt: toDate(meta.updatedAt as string | number | undefined) ?? folderMTime,
   };
 }
 
