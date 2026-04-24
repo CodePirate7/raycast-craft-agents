@@ -10,9 +10,7 @@ export function resolveWorkspacePath(raw: string | undefined | null): string {
   if (!raw || raw.trim() === "") {
     throw new AppError(ErrorCode.WORKSPACE_NOT_FOUND, "workspace path is not configured");
   }
-  const expanded = raw.startsWith("~")
-    ? path.join(os.homedir(), raw.slice(1).replace(/^[/\\]/, ""))
-    : raw;
+  const expanded = raw.startsWith("~") ? path.join(os.homedir(), raw.slice(1).replace(/^[/\\]/, "")) : raw;
   const resolved = path.resolve(expanded);
   // After resolve, there should be no `..` left; if the original contained traversal,
   // the resolved form still points somewhere real — reject any path that resolves

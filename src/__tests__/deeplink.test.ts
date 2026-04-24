@@ -16,9 +16,7 @@ describe("buildNewSession", () => {
   });
 
   it("includes window=focused", () => {
-    expect(buildNewSession({ window: "focused" })).toBe(
-      "craftagents://action/new-session?window=focused",
-    );
+    expect(buildNewSession({ window: "focused" })).toBe("craftagents://action/new-session?window=focused");
   });
 
   it("URL-encodes input with spaces and Chinese", () => {
@@ -72,9 +70,7 @@ describe("buildNewChat", () => {
 
 describe("buildAction", () => {
   it("builds flag-session with id", () => {
-    expect(buildAction("flag-session", "abc-123")).toBe(
-      "craftagents://action/flag-session/abc-123",
-    );
+    expect(buildAction("flag-session", "abc-123")).toBe("craftagents://action/flag-session/abc-123");
   });
 
   it("throws for actions that require id when id is missing", () => {
@@ -88,9 +84,7 @@ describe("buildAction", () => {
   });
 
   it("encodes special chars in id", () => {
-    expect(buildAction("rename-session", "a b/c")).toBe(
-      "craftagents://action/rename-session/a%20b%2Fc",
-    );
+    expect(buildAction("rename-session", "a b/c")).toBe("craftagents://action/rename-session/a%20b%2Fc");
   });
 });
 
@@ -100,15 +94,11 @@ describe("buildCompound", () => {
   });
 
   it("appends path segments", () => {
-    expect(buildCompound("allSessions", ["session", "abc"])).toBe(
-      "craftagents://allSessions/session/abc",
-    );
+    expect(buildCompound("allSessions", ["session", "abc"])).toBe("craftagents://allSessions/session/abc");
   });
 
   it("encodes segments with slashes", () => {
-    expect(buildCompound("sources", ["source", "my/src"])).toBe(
-      "craftagents://sources/source/my%2Fsrc",
-    );
+    expect(buildCompound("sources", ["source", "my/src"])).toBe("craftagents://sources/source/my%2Fsrc");
   });
 
   it("appends window query param", () => {
@@ -116,9 +106,7 @@ describe("buildCompound", () => {
   });
 
   it("skips empty segments", () => {
-    expect(buildCompound("allSessions", ["", "session", ""])).toBe(
-      "craftagents://allSessions/session",
-    );
+    expect(buildCompound("allSessions", ["", "session", ""])).toBe("craftagents://allSessions/session");
   });
 });
 

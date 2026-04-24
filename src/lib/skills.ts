@@ -42,10 +42,7 @@ function parseFrontmatter(text: string): Record<string, unknown> | null {
     const key = line.slice(0, colon).trim();
     let value = line.slice(colon + 1).trim();
     // Strip surrounding quotes
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
       value = value.slice(1, -1);
     }
     out[key] = value;

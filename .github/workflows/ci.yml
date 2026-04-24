@@ -24,14 +24,18 @@ jobs:
 
       - run: npm ci
 
-      - name: Lint (Raycast)
+      - name: Lint (ESLint + Prettier)
         run: npm run lint
 
       - name: Typecheck
-        run: npx tsc --noEmit
+        run: npm run typecheck
 
       - name: Test
         run: npm test
+
+      - name: Raycast lint (Store gate — non-blocking until author is registered)
+        run: npm run lint:raycast
+        continue-on-error: true
 
       - name: Build
         run: npm run build
