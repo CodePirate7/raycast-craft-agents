@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "node",
+  "include-v-in-tag": true,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "skip-github-release": false,
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "raycast-craft-agents",
+      "changelog-sections": [
+        { "type": "feat", "section": "✨ Features" },
+        { "type": "fix", "section": "🐛 Bug Fixes" },
+        { "type": "perf", "section": "⚡ Performance" },
+        { "type": "docs", "section": "📝 Docs" },
+        { "type": "refactor", "section": "♻️ Refactor" },
+        { "type": "test", "section": "✅ Tests", "hidden": true },
+        { "type": "ci", "section": "🤖 CI", "hidden": true },
+        { "type": "chore", "section": "🔧 Chore", "hidden": true }
+      ]
+    }
+  }
+}
