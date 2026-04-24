@@ -33,9 +33,8 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Raycast lint (Store gate — non-blocking until author is registered)
+      - name: Raycast lint (Store gate)
         run: npm run lint:raycast
-        continue-on-error: true
 
       - name: Build
         run: npm run build
